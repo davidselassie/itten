@@ -1,45 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider2D))]
+//[RequireComponent(typeof(Collider2D)), RequireComponent(typeof(SpriteRenderer))]
 public class ColorBehavior : MonoBehaviour {
-    public enum ColorEnum {
-        Blue,
-        Red
-    };
+	public GelColor Color = GelColor.Blue;
 
-	public ColorEnum Color = ColorEnum.Blue;
-    public Collider2D Collider2D {
+    public Collider2D[] Colliders {
         get;
         private set;
     }
-	private Renderer Renderer;
+	private SpriteRenderer[] Renderers;
+
+	void Awake () {
+		Colliders = GetComponentsInChildren<Collider2D>();
+		Renderers = GetComponentsInChildren<SpriteRenderer>();
+    }
 
     void Start () {
-        Collider2D = GetComponent<Collider2D>();
-		Renderer = GetComponent<Renderer>();
 		ReckonColorChange ();
     }
 
 	public void ReckonColorChange () {
 		AllowCollisions ();
-		if (Color == ColorEnum.Blue) {
-			Renderer.material.color = UnityEngine.Color.blue;
-		} else {
-			Renderer.material.color = UnityEngine.Color.red;
-		}
+		UpdateRendererColors ();
 	}
 
     private void AllowCollisions () {
         ColorBehavior[] CBs = FindObjectsOfType(typeof(ColorBehavior)) as ColorBehavior[];
-        foreach (ColorBehavior CB in CBs) {
-            Physics2D.IgnoreCollision (Collider2D,
-                                       CB.Collider2D,
-                                       !ShouldCollide (Color, CB.Color));
+		foreach (Collider2D collider in Colliders) {
+			foreach (ColorBehavior CB in CBs) {
+				foreach (Collider2D colliderCB in CB.Colliders) {
+					Physics2D.IgnoreCollision (collider,
+					                           colliderCB,
+					                           !Color.ShouldCollide (CB.Color));
+				}
+			}
         }
     }
 
-    private static bool ShouldCollide (ColorEnum one, ColorEnum two) {
-        return one != two;
-    }
+	private void UpdateRendererColors () {
+		foreach (SpriteRenderer renderer in Renderers) {
+			renderer.color = Color.RenderColor ();
+		}
+	}
 }
