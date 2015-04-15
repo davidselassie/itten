@@ -10,7 +10,7 @@ public class ColorSwapController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (Input.GetKeyDown ("space")) {
+		if (Input.GetKeyDown ("m")) {
 			Swap ();
 		}
 	}
