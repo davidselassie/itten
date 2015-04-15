@@ -10,18 +10,34 @@ public class ColorSwapController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if (Input.GetKeyDown ("space")) {
+		if (Input.GetKeyDown ("m")) {
 			Swap ();
 		}
 	}
 
-	void Swap () {
-		if (colorBehavior.Color == ColorBehavior.ColorEnum.Blue) {
-			colorBehavior.Color = ColorBehavior.ColorEnum.Red;
-		} else {
-			colorBehavior.Color = ColorBehavior.ColorEnum.Blue;
+	private GelColor Next (GelColor current) {
+		switch (current) {
+		case GelColor.Cyan:
+			return GelColor.Magenta;
+		case GelColor.Magenta:
+			return GelColor.Yellow;
+		case GelColor.Yellow:
+			return GelColor.Cyan;
+		case GelColor.Red:
+			return GelColor.Green;
+		case GelColor.Green:
+			return GelColor.Blue;
+		case GelColor.Blue:
+			return GelColor.Red;
+		case GelColor.Black:
+			return GelColor.Black;
+		default:
+			return GelColor.White;
 		}
-		Debug.Log ("Color swapped", colorBehavior);
+	}
+
+	void Swap () {
+		colorBehavior.Color = Next (colorBehavior.Color);
 		colorBehavior.ReckonColorChange ();
 	}
 }
