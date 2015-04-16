@@ -25,10 +25,9 @@ public static class GelColorExtensions {
 	}
 	
 	public static Color RenderColor (this GelColor color) {
-		Debug.Log(color);
 		return new Color(
-			(color & GelColor.Red) != 0 ? 1.0f : 0.0f,
-			(color & GelColor.Green) != 0 ? 1.0f : 0.0f,
-			(color & GelColor.Blue) != 0 ? 1.0f : 0.0f);
+			(color & GelColor.Cyan) == 0 ? 1.0f : 0.0f,
+			(color & GelColor.Magenta) == 0 ? 1.0f : 0.0f,
+			(color & GelColor.Yellow) == 0 ? 1.0f : 0.0f);
 	}
 }
