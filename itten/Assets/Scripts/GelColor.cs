@@ -20,10 +20,6 @@ public static class GelColorExtensions {
 		return ~color;
 	}
 	
-	public static bool ShouldCollide (this GelColor one, GelColor two) {
-		return one.Mix (two) == GelColor.Black;
-	}
-	
 	public static Color RenderColor (this GelColor color) {
 		return new Color(
 			(color & GelColor.Cyan) == 0 ? 1.0f : 0.0f,
