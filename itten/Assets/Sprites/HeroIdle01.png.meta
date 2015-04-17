@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: db9139315144344588b0492624e23768
+timeCreated: 1429227998
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: HeroIdle01_0
+    21300002: HeroIdle01_1
+    21300004: HeroIdle01_2
+    21300006: HeroIdle01_3
+    21300008: HeroIdle01_4
+    21300010: HeroIdle01_5
+    21300012: HeroIdle01_6
+    21300014: HeroIdle01_7
+    21300016: HeroIdle01_8
+    21300018: HeroIdle01_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 200
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: HeroIdle01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 825
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 825
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_2
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 825
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 550
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_4
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 550
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_5
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 550
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 275
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_7
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 275
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_8
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 275
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroIdle01_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
