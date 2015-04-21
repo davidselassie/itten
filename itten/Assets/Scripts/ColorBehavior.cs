@@ -1,97 +1,81 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
-// These components are required on self or some child of this object.
-// I don't think there's a RequireComponentOnChildren.
-//[RequireComponent(typeof(Collider2D)), RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D)),
+ RequireComponent(typeof(Collider2D)),
+ RequireComponent(typeof(SpriteRenderer))]
 public class ColorBehavior : MonoBehaviour {
 	// Please call SetColor to modify. C# properties don't appear in Unity GUI.
 	public GelColor Color = GelColor.Blue;
-	private GelColor ColorBuffer;
 
     public Collider2D[] Colliders {
         get;
         private set;
     }
-	private SpriteRenderer[] Renderers;
+	public Collider2D[] Triggers {
+		get;
+		private set;
+	}
+	public Rigidbody2D Rigidbody {
+		get;
+		private set;
+	}
+	private SpriteRenderer Renderer;
 	private SpringJoint2D EmbedJoint;
 
 	void Awake () {
-		Colliders = GetComponentsInChildren<Collider2D>();
-		Renderers = GetComponentsInChildren<SpriteRenderer>();
-		// Start with no color change.
-		ColorBuffer = Color;
+		Collider2D[] allColliders = GetComponents<Collider2D>();
+		Colliders = allColliders.Where(collider => !collider.isTrigger).ToArray();
+		if (Colliders.Length < 1) {
+			Debug.LogError("ColorBehavior has no physical colliders!", gameObject);
+		}
+		Triggers = allColliders.Where(collider => collider.isTrigger).ToArray();
+		if (Triggers.Length < 1) {
+			Debug.LogError("ColorBehavior has no overlap trigger colliders!", gameObject);
+		}
+		Renderer = GetComponent<SpriteRenderer>();
+		Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Start () {
-		SwapColorBuffer ();
+		SetColor (Color);
     }
 
-	private void SetIgnoredCollisions (IEnumerable<Collider2D> ignoreWith) {
-		ColorBehavior[] CBs = FindObjectsOfType (typeof(ColorBehavior)) as ColorBehavior[];
-		// First, reset all collisions to allowed.
-		foreach (ColorBehavior CB in CBs) {
-			foreach (Collider2D a in Colliders) {
-				foreach (Collider2D b in CB.Colliders) {
-					Physics2D.IgnoreCollision (a, b, false);
-				}
-			}
-		}
-		// Then disallow specificially ignored colliders.
-		// Careful that you don't ignore non-ColorBehavior containing colliders, as they won't be reset above.
-		foreach (Collider2D b in ignoreWith) {
-			foreach (Collider2D a in Colliders) {
-				Physics2D.IgnoreCollision(a, b, true);
-			}
-		}
-	}
-
 	public void SetColor (GelColor toColor) {
-		if (toColor != Color) {
-			// Enable all collisions. The *next* physics frame will have access to all collisions.
-			SetIgnoredCollisions (new List<Collider2D>());
-			// Now mark that we need to change the color in the *next* physics frame. FixedUpdate does this.
-			ColorBuffer = toColor;
-		}
-	}
+		Color = toColor;
 
-	void FixedUpdate () {
-		if (ColorBuffer != Color) {
-			// Now that we've reset all collisions in the previous physics frame in SetColor, actually apply the correct physics.
-			SwapColorBuffer ();
-		}
-	}
-
-	private void SwapColorBuffer () {
-		Color = ColorBuffer;
-		UpdateRendererColors ();
+		UpdateRendererColor ();
 
 		ColorBehavior[] CBs = FindObjectsOfType (typeof(ColorBehavior)) as ColorBehavior[];
-		List<Collider2D> ignoreCollisionsWith = new List<Collider2D>();
-		ignoreCollisionsWith.AddRange(TransparentColliders (CBs));
-		ignoreCollisionsWith.AddRange(OverlappingColliders (CBs));
-		// Note that because of list appending, the ignore list is ||-ed effectively.
-		SetIgnoredCollisions (ignoreCollisionsWith);
+		ResetCollidability (CBs);
+		ReckonOverlapping (CBs);
 	}
 	
 	private bool ShouldCollide (ColorBehavior that) {
 		return Color.Mix (that.Color) == GelColor.Black;
 	}
 
-	private List<Collider2D> TransparentColliders (ColorBehavior[] CBs) {
-		List<Collider2D> newIgnores = new List<Collider2D>();
-		foreach (ColorBehavior CB in CBs) {
-			if (CB != this && !ShouldCollide (CB)) {
-				newIgnores.AddRange (CB.Colliders);
+	private void SetCollidability (ColorBehavior that, bool enabled) {
+		foreach (Collider2D a in Colliders) {
+			foreach (Collider2D b in that.Colliders) {
+				Physics2D.IgnoreCollision(a, b, !enabled);
 			}
 		}
-		return newIgnores;
+	}
+
+	private void ResetCollidability (ColorBehavior[] CBs) {
+		foreach (ColorBehavior CB in CBs) {
+			if (CB != this) {
+				SetCollidability(CB, ShouldCollide (CB));
+			}
+		}
 	}
 
 	private bool IsTouching (ColorBehavior that) {
-		foreach (Collider2D a in Colliders) {
-			foreach (Collider2D b in that.Colliders) {
+		foreach (Collider2D a in Triggers) {
+			foreach (Collider2D b in that.Triggers) {
 				if (Physics2D.IsTouching(a, b)) {
 					return true;
 				}
@@ -100,31 +84,38 @@ public class ColorBehavior : MonoBehaviour {
 		return false;
 	}
 
-	private List<Collider2D> OverlappingColliders (ColorBehavior[] CBs) {
-		List<Collider2D> newIgnores = new List<Collider2D>();
+	private void ReckonOverlapping (ColorBehavior[] CBs) {
+		foreach (ColorBehavior CB in CBs) {
+			if (CB != this) {
+				if (ShouldCollide (CB) && IsTouching (CB)) {
+					// If we've already got a constraint and we're still stuck after a color change, keep using that constraint.
+					// You just cycled through to another color that also gets stuck.
+					// TODO: Figure out what to do if you should be embedded in multiple other blocks.
+					if (EmbedJoint == null) {
+						EmbedJoint = gameObject.AddComponent<SpringJoint2D>();
+						// Explicitly enable collisions. They're disabled by default and make trigger overlap detection not work.
+						EmbedJoint.enableCollision = true;
+						EmbedJoint.connectedBody = CB.Rigidbody;
+						// Spring zeros to current position in overlapped object's space.
+						EmbedJoint.connectedAnchor = CB.gameObject.transform.InverseTransformPoint(
+							gameObject.transform.position);
+						EmbedJoint.distance = 0.0f;
+						EmbedJoint.frequency = 7.0f;
+					}
+					// Manually disable collisions on only the physical colliders, not the triggers.
+					SetCollidability (CB, false);
+                    return;
+				}
+			}
+		}
+		// If there were no colors we were embedded in, remove existing constraints.
 		if (EmbedJoint != null) {
 			Destroy(EmbedJoint);
 			EmbedJoint = null;
 		}
-		foreach (ColorBehavior CB in CBs) {
-			if (CB != this) {
-				if (ShouldCollide (CB) && IsTouching (CB)) {
-					newIgnores.AddRange (CB.Colliders);
-					EmbedJoint = gameObject.AddComponent<SpringJoint2D>();
-					EmbedJoint.connectedAnchor = gameObject.transform.position;
-					EmbedJoint.enableCollision = false;
-					EmbedJoint.distance = 0.0f;
-					EmbedJoint.frequency = 20.0f;
-					break;
-				}
-			}
-		}
-		return newIgnores;
 	}
 
-	private void UpdateRendererColors () {
-		foreach (SpriteRenderer renderer in Renderers) {
-			renderer.color = Color.RenderColor ();
-		}
+	private void UpdateRendererColor () {
+		Renderer.color = Color.RenderColor ();
 	}
 }
