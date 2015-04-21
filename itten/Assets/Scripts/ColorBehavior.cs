@@ -73,10 +73,10 @@ public class ColorBehavior : MonoBehaviour {
 		}
 	}
 
-	private bool IsTouching (ColorBehavior that) {
+	private bool IsOverlapping (ColorBehavior that) {
 		foreach (Collider2D a in Triggers) {
 			foreach (Collider2D b in that.Triggers) {
-				if (Physics2D.IsTouching(a, b)) {
+				if (b.bounds.Contains(a.bounds.center)) {
 					return true;
 				}
 			}
@@ -87,7 +87,7 @@ public class ColorBehavior : MonoBehaviour {
 	private void ReckonOverlapping (ColorBehavior[] CBs) {
 		foreach (ColorBehavior CB in CBs) {
 			if (CB != this) {
-				if (ShouldCollide (CB) && IsTouching (CB)) {
+				if (ShouldCollide (CB) && IsOverlapping (CB)) {
 					// If we've already got a constraint and we're still stuck after a color change, keep using that constraint.
 					// You just cycled through to another color that also gets stuck.
 					// TODO: Figure out what to do if you should be embedded in multiple other blocks.
