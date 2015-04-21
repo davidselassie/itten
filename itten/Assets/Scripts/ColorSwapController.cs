@@ -9,7 +9,7 @@ public class ColorSwapController : MonoBehaviour {
 		colorBehavior = GetComponent<ColorBehavior>();
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		if (Input.GetKeyDown ("m")) {
 			Swap ();
 		}
@@ -37,7 +37,6 @@ public class ColorSwapController : MonoBehaviour {
 	}
 
 	void Swap () {
-		colorBehavior.Color = Next (colorBehavior.Color);
-		colorBehavior.ReckonColorChange ();
+		colorBehavior.SetColor (Next (colorBehavior.Color));
 	}
 }
