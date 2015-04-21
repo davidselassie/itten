@@ -1,0 +1,286 @@
+fileFormatVersion: 2
+guid: 5defa630a9ae2433fa450986579a5b95
+timeCreated: 1429580323
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: HeroJump01_0
+    21300002: HeroJump01_1
+    21300004: HeroJump01_2
+    21300006: HeroJump01_3
+    21300008: HeroJump01_4
+    21300010: HeroJump01_5
+    21300012: HeroJump01_6
+    21300014: HeroJump01_7
+    21300016: HeroJump01_8
+    21300018: HeroJump01_9
+    21300020: HeroJump01_10
+    21300022: HeroJump01_11
+    21300024: HeroJump01_12
+    21300026: HeroJump01_13
+    21300028: HeroJump01_14
+    21300030: HeroJump01_15
+    21300032: HeroJump01_16
+    21300034: HeroJump01_17
+    21300036: HeroJump01_18
+    21300038: HeroJump01_19
+    21300040: HeroJump01_20
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 200
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: HeroJump01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1375
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1375
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_2
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1375
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_3
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1375
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1100
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_6
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1100
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_7
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1100
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 825
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_9
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 825
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_10
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 825
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_11
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 825
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 550
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_13
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 550
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_14
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 550
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_15
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 550
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 275
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_17
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 275
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_18
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 275
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_19
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 275
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HeroJump01_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
