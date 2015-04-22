@@ -27,7 +27,7 @@ public class ColorBehavior : MonoBehaviour {
 	}
 	private SpriteRenderer[] Renderers;
 
-	private SpringJoint2D EmbedJoint = null;
+	private Joint2D EmbedJoint = null;
 
 	void Awake () {
 		Collider2D[] allColliders = GetComponentsInChildren<Collider2D>();
@@ -101,15 +101,16 @@ public class ColorBehavior : MonoBehaviour {
 					// You just cycled through to another color that also gets stuck.
 					// TODO: Figure out what to do if you should be embedded in multiple other blocks.
 					if (EmbedJoint == null) {
-						EmbedJoint = gameObject.AddComponent<SpringJoint2D>();
+						DistanceJoint2D newJoint = gameObject.AddComponent<DistanceJoint2D>();
 						// Explicitly enable collisions. They're disabled by default and make trigger overlap detection not work.
-						EmbedJoint.enableCollision = true;
-						EmbedJoint.connectedBody = CB.Rigidbody;
+						newJoint.enableCollision = true;
+						newJoint.connectedBody = CB.Rigidbody;
 						// Spring zeros to current position in overlapped object's space.
-						EmbedJoint.connectedAnchor = CB.gameObject.transform.InverseTransformPoint(
+						newJoint.connectedAnchor = CB.gameObject.transform.InverseTransformPoint(
 							gameObject.transform.position);
-						EmbedJoint.distance = 0.0f;
-						EmbedJoint.frequency = 7.0f;
+						newJoint.distance = 0.0f;
+
+						EmbedJoint = newJoint;
 					}
 					// Manually disable collisions on only the physical colliders, not the triggers.
 					SetCollidability (CB, false);
