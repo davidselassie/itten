@@ -3,10 +3,19 @@ using System.Collections;
 
 [RequireComponent(typeof(ColorBehavior))]
 public class ColorSwapController : MonoBehaviour {
-	private ColorBehavior colorBehavior;
+	public GameObject BurstPrefab;
+	public Transform BurstTarget;
+
+	private ColorBehavior ColorBehavior;
 
 	void Start () {
-		colorBehavior = GetComponent<ColorBehavior>();
+		ColorBehavior = GetComponent<ColorBehavior>();
+		if (BurstPrefab == null) {
+			Debug.LogWarning ("ColorSwapController doesn't have a burst prefab.", gameObject);
+		}
+		if (BurstTarget == null) {
+			BurstTarget = gameObject.transform;
+		}
 	}
 
 	void Update () {
@@ -37,6 +46,14 @@ public class ColorSwapController : MonoBehaviour {
 	}
 
 	void Swap () {
-		colorBehavior.SetColor (Next (colorBehavior.Color));
+		ColorBehavior.SetColor (Next (ColorBehavior.Color));
+		Burst ();
+	}
+
+	void Burst () {
+		if (BurstPrefab != null) {
+			GameObject burst = Instantiate(BurstPrefab, BurstTarget.position, BurstTarget.rotation) as GameObject;
+			burst.transform.parent = gameObject.transform;
+		}
 	}
 }
