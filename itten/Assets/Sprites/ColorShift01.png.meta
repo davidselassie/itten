@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 05cda6dce93e94e7c91724d446594b1a
-timeCreated: 1429647991
+timeCreated: 1429658086
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -22,6 +22,7 @@ TextureImporter:
     21300030: ColorShift01_15
     21300032: ColorShift01_16
     21300034: ColorShift01_17
+    21300036: ColorShift01_18
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -75,7 +76,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_1
       rect:
@@ -85,7 +86,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_2
       rect:
@@ -95,7 +96,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_3
       rect:
@@ -105,7 +106,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_4
       rect:
@@ -115,7 +116,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_5
       rect:
@@ -125,7 +126,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_6
       rect:
@@ -135,7 +136,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_7
       rect:
@@ -145,7 +146,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_8
       rect:
@@ -155,7 +156,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_9
       rect:
@@ -165,7 +166,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_10
       rect:
@@ -175,7 +176,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_11
       rect:
@@ -185,7 +186,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_12
       rect:
@@ -195,7 +196,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_13
       rect:
@@ -205,7 +206,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_14
       rect:
@@ -215,7 +216,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_15
       rect:
@@ -225,7 +226,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_16
       rect:
@@ -235,7 +236,7 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ColorShift01_17
       rect:
@@ -245,7 +246,17 @@ TextureImporter:
         width: 275
         height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ColorShift01_18
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 0
+        width: 275
+        height: 275
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
