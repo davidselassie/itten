@@ -22,11 +22,12 @@ public class ColorBehavior : MonoBehaviour {
 		get;
 		private set;
 	}
-	private SpriteRenderer Renderer;
-	private SpringJoint2D EmbedJoint;
+	private SpriteRenderer[] Renderers;
+
+	private SpringJoint2D EmbedJoint = null;
 
 	void Awake () {
-		Collider2D[] allColliders = GetComponents<Collider2D>();
+		Collider2D[] allColliders = GetComponentsInChildren<Collider2D>();
 		Colliders = allColliders.Where(collider => !collider.isTrigger).ToArray();
 		if (Colliders.Length < 1) {
 			Debug.LogError("ColorBehavior has no physical colliders!", gameObject);
@@ -35,7 +36,10 @@ public class ColorBehavior : MonoBehaviour {
 		if (Triggers.Length < 1) {
 			Debug.LogError("ColorBehavior has no overlap trigger colliders!", gameObject);
 		}
-		Renderer = GetComponent<SpriteRenderer>();
+		if (Colliders.Length != Triggers.Length) {
+			Debug.LogError("ColorBehavior is missing a trigger or physical collider; unequal counts!", gameObject);
+		}
+		Renderers = GetComponentsInChildren<SpriteRenderer>();
 		Rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -116,6 +120,8 @@ public class ColorBehavior : MonoBehaviour {
 	}
 
 	private void UpdateRendererColor () {
-		Renderer.color = Color.RenderColor ();
+		foreach (SpriteRenderer renderer in Renderers) {
+			renderer.color = Color.RenderColor ();
+		}
 	}
 }
