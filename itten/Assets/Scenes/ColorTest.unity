@@ -420,10 +420,10 @@ HingeJoint2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136636550}
   m_Enabled: 1
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 1981327111}
-  m_Anchor: {x: 1.29006255, y: .548862934}
-  m_ConnectedAnchor: {x: 1.43079376, y: .0469114929}
+  m_Anchor: {x: 1.2606163, y: .625300407}
+  m_ConnectedAnchor: {x: 1.25, y: -9.93410687e-10}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -715,8 +715,8 @@ HingeJoint2D:
   m_Enabled: 1
   m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
-  m_Anchor: {x: 1.32915115, y: .603982031}
-  m_ConnectedAnchor: {x: -7.84311628, y: 8.09257603}
+  m_Anchor: {x: 1.27103424, y: .623959661}
+  m_ConnectedAnchor: {x: -8.83224106, y: 9.08751583}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
