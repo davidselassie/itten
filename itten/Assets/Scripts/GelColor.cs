@@ -20,10 +20,17 @@ public static class GelColorExtensions {
 		return ~color;
 	}
 	
-	public static Color RenderColor (this GelColor color) {
+	public static Color GetRenderColor (this GelColor color) {
 		return new Color(
 			(color & GelColor.Cyan) == 0 ? 1.0f : 0.0f,
 			(color & GelColor.Magenta) == 0 ? 1.0f : 0.0f,
 			(color & GelColor.Yellow) == 0 ? 1.0f : 0.0f);
+	}
+
+	public static GelColor FromRenderColor (Color renderColor) {
+		float c = 1.0f - renderColor.r, m = 1.0f - renderColor.g, y = 1.0f - renderColor.b;
+		return ((c >= 0.5f ? GelColor.Cyan : GelColor.White) |
+		        (m >= 0.5f ? GelColor.Magenta : GelColor.White) |
+		        (y >= 0.5f ? GelColor.Yellow : GelColor.White));
 	}
 }

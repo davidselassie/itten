@@ -210,6 +210,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 21243056, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21243056, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
   m_IsPrefabParent: 0
@@ -312,7 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308c449b569344c95b51e6b5a481b9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: 3
 --- !u!61 &366329214
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -379,7 +386,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d90a8faf6fb9540b084ef2825cc3a5dc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 1}
 --- !u!4 &366329218
 Transform:
   m_ObjectHideFlags: 0
@@ -471,7 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308c449b569344c95b51e6b5a481b9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: 5
 --- !u!212 &1136636555
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -497,7 +503,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d90a8faf6fb9540b084ef2825cc3a5dc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
 --- !u!4 &1136636556
 Transform:
   m_ObjectHideFlags: 0
@@ -505,7 +511,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136636550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.04, y: -1.64999998, z: 0}
+  m_LocalPosition: {x: -9.22000027, y: .479999989, z: 0}
   m_LocalScale: {x: 1, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -608,7 +614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308c449b569344c95b51e6b5a481b9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: 6
 --- !u!212 &1706515603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -634,7 +639,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d90a8faf6fb9540b084ef2825cc3a5dc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &1706515604
 Transform:
   m_ObjectHideFlags: 0
@@ -716,7 +721,7 @@ HingeJoint2D:
   m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_Anchor: {x: 1.27103424, y: .623959661}
-  m_ConnectedAnchor: {x: -8.83224106, y: 9.08751583}
+  m_ConnectedAnchor: {x: -8.01224136, y: 11.2175159}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -773,7 +778,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1981327109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.14999962, y: 1.60000002, z: 0}
+  m_LocalPosition: {x: -8.32999992, y: 3.73000002, z: 0}
   m_LocalScale: {x: .25, y: 12, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

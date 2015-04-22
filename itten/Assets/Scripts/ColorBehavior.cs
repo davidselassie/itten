@@ -7,8 +7,11 @@ using System.Linq;
  RequireComponent(typeof(Collider2D)),
  RequireComponent(typeof(SpriteRenderer))]
 public class ColorBehavior : MonoBehaviour {
-	// Please call SetColor to modify. C# properties don't appear in Unity GUI.
-	public GelColor Color = GelColor.Blue;
+	// Color is extracted from the color of the renderers. Set the starting color in the GUI on the renderers.
+	public GelColor Color {
+		get;
+		private set;
+	}
 
     public Collider2D[] Colliders {
         get;
@@ -44,6 +47,8 @@ public class ColorBehavior : MonoBehaviour {
     }
 
     void Start () {
+		// Use the first renderer we find to pick the color.
+		Color = GelColorExtensions.FromRenderColor (Renderers[0].color);
 		SetColor (Color);
     }
 
@@ -121,7 +126,7 @@ public class ColorBehavior : MonoBehaviour {
 
 	private void UpdateRendererColor () {
 		foreach (SpriteRenderer renderer in Renderers) {
-			renderer.color = Color.RenderColor ();
+			renderer.color = Color.GetRenderColor ();
 		}
 	}
 }
