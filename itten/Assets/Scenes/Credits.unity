@@ -259,7 +259,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -1853}
+  m_AnchoredPosition: {x: 0, y: -3330}
   m_SizeDelta: {x: 967.900024, y: 443.920013}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &652091176
@@ -518,7 +518,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 700493757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.8999996, z: -10}
+  m_LocalPosition: {x: 0, y: 25.5699997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -559,7 +559,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -1153}
+  m_AnchoredPosition: {x: 0, y: -1638}
   m_SizeDelta: {x: 967.900024, y: 443.920013}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &715476183
@@ -744,6 +744,7 @@ RectTransform:
   - {fileID: 515367292}
   - {fileID: 715476182}
   - {fileID: 652091175}
+  - {fileID: 1587436228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -856,10 +857,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1587436225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -40.0999985, z: 90}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -5383, z: 0}
+  m_LocalScale: {x: 57, y: 57, z: 57}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 920152591}
   m_RootOrder: 3
 --- !u!199 &1587436229
 ParticleSystemRenderer:
