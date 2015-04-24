@@ -4,6 +4,9 @@ using System.Collections;
 public class GameFlowLogic : MonoBehaviour {
 	void Start () {
 		DontDestroyOnLoad(gameObject);
+
+		// Start off by advancing to the next level.
+		AdvanceLevel ();
 	}
 
 	// Levels are advanced in order in the application.
