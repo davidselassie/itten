@@ -494,14 +494,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 216312957}
   - 20: {fileID: 216312956}
-  - 92: {fileID: 216312955}
-  - 124: {fileID: 216312954}
-  - 81: {fileID: 216312953}
-  - 114: {fileID: 216312952}
   - 114: {fileID: 216312951}
   - 114: {fileID: 216312950}
   m_Layer: 0
-  m_Name: TempCam
+  m_Name: RefCam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,43 +564,6 @@ MonoBehaviour:
   blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
   brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
     type: 3}
---- !u!114 &216312952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 216312949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d8238cc53530b64fbb7828c3d3bb591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 2113022722}
-  damping: .5
-  lookAheadFactor: 4
-  lookAheadReturnSpeed: .5
-  lookAheadMoveThreshold: .100000001
---- !u!81 &216312953
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 216312949}
-  m_Enabled: 1
---- !u!124 &216312954
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 216312949}
-  m_Enabled: 1
---- !u!92 &216312955
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 216312949}
-  m_Enabled: 1
 --- !u!20 &216312956
 Camera:
   m_ObjectHideFlags: 0
@@ -872,7 +831,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 384296701}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 1.25, y: .3125}
   serializedVersion: 2
@@ -1631,6 +1590,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 347953821}
   m_RootOrder: 10
+--- !u!1001 &990691873
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 424982, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424982, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424982, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424982, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424982, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424982, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424982, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 424982, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 258af44c46542422f886c1dfa495a052, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &998064990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2213,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1445821012}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 1.25, y: .3125}
   serializedVersion: 2
@@ -2817,7 +2818,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1863133149}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 1.25, y: .3125}
   serializedVersion: 2
@@ -3093,7 +3094,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2140349529}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 1.25, y: .3125}
   serializedVersion: 2
