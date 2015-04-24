@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 [RequireComponent(typeof(Rigidbody2D)),
- RequireComponent(typeof(Collider2D)),
- RequireComponent(typeof(SpriteRenderer))]
+ RequireComponent(typeof(Collider2D))]
 public class ColorBehavior : MonoBehaviour {
 	// Color is extracted from the color of the renderers. Set the starting color in the GUI on the renderers.
 	public GelColor Color {
@@ -26,6 +26,7 @@ public class ColorBehavior : MonoBehaviour {
 		private set;
 	}
 	private SpriteRenderer[] Renderers;
+	private Text[] Texts;
 
 	private Joint2D EmbedJoint = null;
 
@@ -43,12 +44,17 @@ public class ColorBehavior : MonoBehaviour {
 			Debug.LogError("ColorBehavior is missing a trigger or physical collider; unequal counts!", gameObject);
 		}
 		Renderers = GetComponentsInChildren<SpriteRenderer>();
+		Texts = GetComponentsInChildren<Text>();
 		Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Start () {
 		// Use the first renderer we find to pick the color.
-		Color = GelColorExtensions.FromRenderColor (Renderers[0].color);
+		if (Renderers.Length > 0) {
+			Color = GelColorExtensions.FromRenderColor (Renderers[0].color);
+		} else {
+			Color = GelColorExtensions.FromRenderColor (Texts[0].color);
+		}
 		SetColor (Color);
     }
 
@@ -128,6 +134,9 @@ public class ColorBehavior : MonoBehaviour {
 	private void UpdateRendererColor () {
 		foreach (SpriteRenderer renderer in Renderers) {
 			renderer.color = Color.GetRenderColor ();
+		}
+		foreach (Text text in Texts) {
+			text.color = Color.GetRenderColor ();
 		}
 	}
 }
