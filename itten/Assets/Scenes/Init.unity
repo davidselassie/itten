@@ -216,7 +216,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .661764741, g: .656395435, b: .583910048, a: .0196078438}
+  m_BackGroundColor: {r: .617647052, g: .615767777, b: .590397894, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -444,8 +444,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7c6346e82f64d442d8db92b2842d69d7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: .5
+  m_Pitch: .5
   Loop: 0
   Mute: 0
   Priority: 128

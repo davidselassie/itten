@@ -99,9 +99,9 @@ GameObject:
   - 114: {fileID: 515367297}
   - 50: {fileID: 515367295}
   - 61: {fileID: 515367296}
-  - 61: {fileID: 515367299}
   - 114: {fileID: 515367294}
   - 114: {fileID: 515367293}
+  - 61: {fileID: 515367299}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -175,9 +175,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 1.67302036, y: 56.8652649}
+  m_Offset: {x: 1.67302036, y: 68.5999985}
   serializedVersion: 2
-  m_Size: {x: 820.531006, y: 215.081207}
+  m_Size: {x: 575.099976, y: 210.300003}
 --- !u!114 &515367297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5261527989ad34cb589ea76290ac5b25, type: 3}
     m_FontSize: 300
     m_FontStyle: 0
     m_BestFit: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ITTEN
+  m_Text: itten
 --- !u!222 &515367298
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -220,9 +220,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 1.67302036, y: 56.8652649}
+  m_Offset: {x: 1.67302036, y: 68.5999985}
   serializedVersion: 2
-  m_Size: {x: 820.531006, y: 215.081207}
+  m_Size: {x: 575.099976, y: 210.300003}
 --- !u!1 &652091174
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,10 +234,10 @@ GameObject:
   - 222: {fileID: 652091181}
   - 114: {fileID: 652091180}
   - 50: {fileID: 652091178}
-  - 61: {fileID: 652091179}
   - 61: {fileID: 652091182}
   - 114: {fileID: 652091177}
   - 114: {fileID: 652091176}
+  - 61: {fileID: 652091179}
   m_Layer: 5
   m_Name: David
   m_TagString: Untagged
@@ -311,9 +311,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 2.96865034, y: 166.486694}
+  m_Offset: {x: 2.96865034, y: 179.5}
   serializedVersion: 2
-  m_Size: {x: 802.468262, y: 72.7555237}
+  m_Size: {x: 763.099976, y: 80.5999985}
 --- !u!114 &652091180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5261527989ad34cb589ea76290ac5b25, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -356,9 +356,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 2.96865034, y: 166.486694}
+  m_Offset: {x: 2.96865034, y: 179.5}
   serializedVersion: 2
-  m_Size: {x: 802.468262, y: 72.7555237}
+  m_Size: {x: 763.099976, y: 80.5999985}
 --- !u!1 &700493757
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,9 +535,9 @@ GameObject:
   - 114: {fileID: 715476187}
   - 50: {fileID: 715476185}
   - 61: {fileID: 715476186}
-  - 61: {fileID: 715476189}
   - 114: {fileID: 715476184}
   - 114: {fileID: 715476183}
+  - 61: {fileID: 715476189}
   m_Layer: 5
   m_Name: Cosmo
   m_TagString: Untagged
@@ -611,7 +611,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 3.57106161, y: 167.072571}
+  m_Offset: {x: 3.57106161, y: 180.800003}
   serializedVersion: 2
   m_Size: {x: 608.267822, y: 74.9479065}
 --- !u!114 &715476187
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5261527989ad34cb589ea76290ac5b25, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -656,7 +656,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 3.57106161, y: 167.072571}
+  m_Offset: {x: 3.57106161, y: 180.800003}
   serializedVersion: 2
   m_Size: {x: 608.267822, y: 74.9479065}
 --- !u!1 &920152587
