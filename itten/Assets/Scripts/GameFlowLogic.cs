@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameFlowLogic : MonoBehaviour {
-	public AudioSource AdvanceAudio;
-	public AudioSource RestartAudio;
+	public AudioSource LoadLevelAudioSource;
 
 	void Start () {
 		DontDestroyOnLoad(gameObject);
@@ -12,18 +12,16 @@ public class GameFlowLogic : MonoBehaviour {
 		AdvanceLevel ();
 	}
 
-	// Levels are advanced in order in the application.
+	// Levels are advanced in order in the application. Skip level 0 (the Init level).
 	public void AdvanceLevel () {
-		Application.LoadLevel((Application.loadedLevel + 1) % Application.levelCount);
-		if (AdvanceAudio != null) {
-			AdvanceAudio.Play ();
+		int nextLevel = (Application.loadedLevel + 1) % Application.levelCount;
+		if (nextLevel == 0) {
+			nextLevel = 1;
 		}
+		Application.LoadLevel(nextLevel);
 	}
 
 	public void RestartLevel () {
 		Application.LoadLevel(Application.loadedLevel);
-		if (RestartAudio != null) {
-			RestartAudio.Play ();
-		}
 	}
 }

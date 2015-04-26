@@ -836,6 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2475dcaccd4cd42e989608a84292d484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActivateSound: {fileID: 8300000, guid: 72a8ebe3162a44f799f802975c1945ab, type: 3}
 --- !u!68 &1587436227
 EdgeCollider2D:
   m_ObjectHideFlags: 0

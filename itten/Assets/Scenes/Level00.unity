@@ -330,7 +330,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 21292190, guid: a024038ce861344bc9527fb6881cf430, type: 2}
+    - target: {fileID: 21281370, guid: a024038ce861344bc9527fb6881cf430, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -338,7 +338,7 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 21281370, guid: a024038ce861344bc9527fb6881cf430, type: 2}
+    - target: {fileID: 21292190, guid: a024038ce861344bc9527fb6881cf430, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -1075,7 +1075,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 462748329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.28000021, y: 19.4699993, z: -10}
+  m_LocalPosition: {x: 6.03000021, y: 19.4699993, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3322,6 +3322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d84626f09186456ea06caf3caf5a278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActivateSound: {fileID: 8300000, guid: 72a8ebe3162a44f799f802975c1945ab, type: 3}
 --- !u!68 &1382324785
 EdgeCollider2D:
   m_ObjectHideFlags: 0

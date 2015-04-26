@@ -3,6 +3,8 @@ using System.Collections;
 
 [RequireComponent(typeof(Collider2D))]
 public abstract class AbstractLevelBehavior : MonoBehaviour {
+	public AudioClip ActivateSound;
+
 	protected GameFlowLogic FlowLogic;
 	
 	void Start () {
@@ -20,6 +22,10 @@ public abstract class AbstractLevelBehavior : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			if (FlowLogic != null) {
 				Action ();
+				if (ActivateSound != null) {
+					FlowLogic.LoadLevelAudioSource.clip = ActivateSound;
+					FlowLogic.LoadLevelAudioSource.Play ();
+				}
 			} else {
 				Application.LoadLevel(Application.loadedLevel);
 			}
