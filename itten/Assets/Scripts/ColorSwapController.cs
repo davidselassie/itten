@@ -19,11 +19,11 @@ public class ColorSwapController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown ("r")) {
+		if (Input.GetKeyDown ("r") && ColorBehavior.Color != GelColor.Red) {
 			SwapTo (GelColor.Red);
-		} else if (Input.GetKeyDown ("g")) {
+		} else if (Input.GetKeyDown ("g") && ColorBehavior.Color != GelColor.Green) {
 			SwapTo (GelColor.Green);
-		} else if (Input.GetKeyDown ("b")) {
+		} else if (Input.GetKeyDown ("b") && ColorBehavior.Color != GelColor.Blue) {
 			SwapTo (GelColor.Blue);
 		}
 	}
