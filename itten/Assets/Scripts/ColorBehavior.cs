@@ -67,6 +67,10 @@ public class ColorBehavior : MonoBehaviour {
 		ResetCollidability (CBs);
 		ReckonOverlapping (CBs);
 	}
+
+	public bool IsEmbedded () {
+		return EmbedJoint != null;
+	}
 	
 	private bool ShouldCollide (ColorBehavior that) {
 		return Color.Mix (that.Color) == GelColor.Black;
