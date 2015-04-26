@@ -19,38 +19,21 @@ public class ColorSwapController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown ("m")) {
-			Swap ();
+		if (Input.GetKeyDown ("r")) {
+			SwapTo (GelColor.Red);
+		} else if (Input.GetKeyDown ("g")) {
+			SwapTo (GelColor.Green);
+		} else if (Input.GetKeyDown ("b")) {
+			SwapTo (GelColor.Blue);
 		}
 	}
 
-	private GelColor Next (GelColor current) {
-		switch (current) {
-		case GelColor.Cyan:
-			return GelColor.Magenta;
-		case GelColor.Magenta:
-			return GelColor.Yellow;
-		case GelColor.Yellow:
-			return GelColor.Cyan;
-		case GelColor.Red:
-			return GelColor.Green;
-		case GelColor.Green:
-			return GelColor.Blue;
-		case GelColor.Blue:
-			return GelColor.Red;
-		case GelColor.Black:
-			return GelColor.Black;
-		default:
-			return GelColor.White;
-		}
-	}
-
-	void Swap () {
-		ColorBehavior.SetColor (Next (ColorBehavior.Color));
+	private void SwapTo (GelColor next) {
+		ColorBehavior.SetColor (next);
 		Burst ();
 	}
 
-	void Burst () {
+	private void Burst () {
 		if (BurstPrefab != null) {
 			GameObject burst = Instantiate(BurstPrefab, BurstTarget.position, BurstTarget.rotation) as GameObject;
 			burst.transform.parent = gameObject.transform;
