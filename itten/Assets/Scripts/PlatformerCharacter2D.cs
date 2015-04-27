@@ -11,6 +11,9 @@ namespace UnityStandardAssets._2D
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
+		public AudioSource RunAudioPlayer;
+		public AudioSource JumpAudioPlayer;
+
         private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
         const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
         private bool m_Grounded;            // Whether or not the player is grounded.
@@ -79,6 +82,15 @@ namespace UnityStandardAssets._2D
                 // Move the character
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
+				if (RunAudioPlayer != null) {
+					bool shouldPlay = (move != 0 && m_Grounded);
+					if (shouldPlay && !RunAudioPlayer.isPlaying) {
+						RunAudioPlayer.Play ();
+					} else if (!shouldPlay && RunAudioPlayer.isPlaying) {
+						RunAudioPlayer.Stop ();
+					}
+				}
+
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)
                 {
@@ -99,6 +111,9 @@ namespace UnityStandardAssets._2D
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				if (JumpAudioPlayer != null) {
+					JumpAudioPlayer.Play ();
+				}
             }
         }
 
