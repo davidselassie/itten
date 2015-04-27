@@ -378,7 +378,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   RunAudioPlayer: {fileID: 8217266}
-  JumpAudioPlayer: {fileID: 8217266}
+  JumpAudioPlayer: {fileID: 8210236}
 --- !u!114 &11431422
 MonoBehaviour:
   m_ObjectHideFlags: 1
