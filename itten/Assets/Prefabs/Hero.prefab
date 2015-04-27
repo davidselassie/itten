@@ -157,7 +157,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165926}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 2333c900d6b43483aa250d8cc85a3879, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -.419999987}
@@ -170,7 +170,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165926}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 2333c900d6b43483aa250d8cc85a3879, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308c449b569344c95b51e6b5a481b9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alpha: .75
 --- !u!212 &21243056
 SpriteRenderer:
   m_ObjectHideFlags: 1
