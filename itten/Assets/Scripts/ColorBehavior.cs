@@ -25,8 +25,9 @@ public class ColorBehavior : MonoBehaviour {
 		get;
 		private set;
 	}
-	private SpriteRenderer[] Renderers;
+	private SpriteRenderer[] SpriteRenderers;
 	private Text[] Texts;
+	private BlendModes.BlendModeEffect[] BMEs;
 
 	private Joint2D EmbedJoint = null;
 
@@ -43,16 +44,19 @@ public class ColorBehavior : MonoBehaviour {
 		if (Colliders.Length != Triggers.Length) {
 			Debug.LogError("ColorBehavior is missing a trigger or physical collider; unequal counts!", gameObject);
 		}
-		Renderers = GetComponentsInChildren<SpriteRenderer>();
+		SpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 		Texts = GetComponentsInChildren<Text>();
+		BMEs = GetComponentsInChildren<BlendModes.BlendModeEffect>();
 		Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Start () {
 		// Use the first renderer we find to pick the color.
-		if (Renderers.Length > 0) {
-			Color = GelColorExtensions.FromRenderColor (Renderers[0].color);
-		} else {
+		if (SpriteRenderers.Length > 0) {
+			Color = GelColorExtensions.FromRenderColor (SpriteRenderers[0].color);
+		} else if (BMEs.Length > 0) {
+			Color = GelColorExtensions.FromRenderColor (BMEs[0].TintColor);
+        } else if (Texts.Length > 0) {
 			Color = GelColorExtensions.FromRenderColor (Texts[0].color);
 		}
 		SetColor (Color);
@@ -136,11 +140,15 @@ public class ColorBehavior : MonoBehaviour {
 	}
 
 	private void UpdateRendererColor () {
-		foreach (SpriteRenderer renderer in Renderers) {
-			renderer.color = Color.GetRenderColor ();
+		Color renderColor = Color.GetRenderColor ();
+		foreach (SpriteRenderer spriteRenderer in SpriteRenderers) {
+			spriteRenderer.color = renderColor;
 		}
 		foreach (Text text in Texts) {
-			text.color = Color.GetRenderColor ();
+			text.color = renderColor;
+		}
+		foreach (BlendModes.BlendModeEffect BME in BMEs) {
+			BME.TintColor = renderColor;
 		}
 	}
 }
