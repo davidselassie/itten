@@ -30,13 +30,16 @@ public class ColorSwapController : MonoBehaviour {
 
 	private void SwapTo (GelColor next) {
 		ColorBehavior.SetColor (next);
-		Burst ();
+		Burst (next);
 	}
 
-	private void Burst () {
+	private void Burst (GelColor color) {
 		if (BurstPrefab != null) {
 			GameObject burst = Instantiate(BurstPrefab, BurstTarget.position, BurstTarget.rotation) as GameObject;
 			burst.transform.parent = gameObject.transform;
+			foreach (SpriteRenderer renderer in burst.GetComponentsInChildren<SpriteRenderer>()) {
+				renderer.color = color.GetRenderColor ();
+			}
 		}
 	}
 }
