@@ -24,8 +24,7 @@ public static class GelColorExtensions {
 		return new Color(
 			(color & GelColor.Cyan) == 0 ? 1.0f : 0.0f,
 			(color & GelColor.Magenta) == 0 ? 1.0f : 0.0f,
-			(color & GelColor.Yellow) == 0 ? 1.0f : 0.0f,
-			0.5f);
+			(color & GelColor.Yellow) == 0 ? 1.0f : 0.0f);
 	}
 
 	public static GelColor FromRenderColor (Color renderColor) {
