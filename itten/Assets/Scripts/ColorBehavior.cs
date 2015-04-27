@@ -7,7 +7,7 @@ using System.Linq;
 [RequireComponent(typeof(Rigidbody2D)),
  RequireComponent(typeof(Collider2D))]
 public class ColorBehavior : MonoBehaviour {
-	public float Alpha = 1.0f;
+	public float Alpha = 0.75f;
 
 	// Color is extracted from the color of the renderers. Set the starting color in the GUI on the renderers.
 	public GelColor Color {
