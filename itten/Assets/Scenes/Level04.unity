@@ -487,7 +487,6 @@ GameObject:
   - 114: {fileID: 535479629}
   - 114: {fileID: 535479628}
   - 233: {fileID: 535479626}
-  - 61: {fileID: 535479635}
   m_Layer: 0
   m_Name: Movable 2
   m_TagString: Untagged
@@ -637,19 +636,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 535479624}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!61 &535479635
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 535479624}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
 --- !u!1 &545574522
 GameObject:
   m_ObjectHideFlags: 0
