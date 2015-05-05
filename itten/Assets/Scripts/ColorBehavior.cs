@@ -100,8 +100,9 @@ public class ColorBehavior : MonoBehaviour {
 
 	private bool IsOverlapping (ColorBehavior that) {
 		foreach (Collider2D a in Triggers) {
-			foreach (Collider2D b in that.Triggers) {
-				if (b.bounds.Contains(a.bounds.center)) {
+			Collider2D[] allOverlap = Physics2D.OverlapPointAll(a.bounds.center);
+			foreach (Collider2D c in allOverlap) {
+				if (that.Triggers.Contains(c)) {
 					return true;
 				}
 			}
