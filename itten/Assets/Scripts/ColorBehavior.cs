@@ -56,11 +56,11 @@ public class ColorBehavior : MonoBehaviour {
 		// Use the first renderer we find to pick the color.
 		if (SpriteRenderers.Length > 0) {
 			Color = GelColorExtensions.FromRenderColor (SpriteRenderers[0].color);
+		} else if (Texts.Length > 0) {
+			Color = GelColorExtensions.FromRenderColor (Texts[0].color);
 		} else if (BMEs.Length > 0) {
 			Color = GelColorExtensions.FromRenderColor (BMEs[0].TintColor);
-        } else if (Texts.Length > 0) {
-			Color = GelColorExtensions.FromRenderColor (Texts[0].color);
-		}
+        }
 		SetColor (Color);
     }
 

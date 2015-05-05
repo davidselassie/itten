@@ -35,6 +35,8 @@ public class ColorCycleBehavior : MonoBehaviour {
 		case GelColor.Blue:
 			return GelColor.Red;
 		case GelColor.Black:
+			return GelColor.White;
+		case GelColor.White:
 			return GelColor.Black;
 		default:
 			return GelColor.White;
