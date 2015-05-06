@@ -1,112 +1,89 @@
-using System;
 using UnityEngine;
 
-namespace UnityStandardAssets._2D
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlatformerCharacter2D : MonoBehaviour
 {
-    public class PlatformerCharacter2D : MonoBehaviour
-    {
-        [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
-        [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
-        [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
-        [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
+	[SerializeField] private float MaxXSpeed = 10.0f;
+	[SerializeField] private float JumpForce = 1200.0f;
 
-		public AudioSource RunAudioPlayer;
-		public AudioSource JumpAudioPlayer;
+	private bool OnGround = false;
+	public bool ForceAllowJump = false;
 
-        private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
-        const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-        private bool m_Grounded;            // Whether or not the player is grounded.
-        private Animator m_Anim;            // Reference to the player's animator component.
-        private Rigidbody2D m_Rigidbody2D;
-        private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+	public Transform GroundCheck;
+	private Animator Animator;
+	private Rigidbody2D Rigidbody;
+	private ColorBehavior ColorBehavior;
 
-		private ColorBehavior m_ColorBehavior;
+	public AudioSource RunAudioPlayer;
+	public AudioSource JumpAudioPlayer;
 
-        private void Awake()
-        {
-            // Setting up references.
-            m_GroundCheck = transform.Find("GroundCheck");
-            m_Anim = GetComponent<Animator>();
-            m_Rigidbody2D = GetComponent<Rigidbody2D>();
-			m_ColorBehavior = GetComponent<ColorBehavior>();
-        }
+	private void Awake () {
+		Animator = GetComponent<Animator>();
+		Rigidbody = GetComponent<Rigidbody2D>();
+		ColorBehavior = GetComponent<ColorBehavior>();
+	}
 
-
-        private void FixedUpdate()
-        {
-            m_Grounded = false;
-
-            // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-            // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                if (colliders[i].gameObject != gameObject)
-                    m_Grounded = true;
-            }
-            m_Anim.SetBool("Ground", m_Grounded);
-
-            // Set the vertical animation
-            m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
-        }
-
-
-        public void Move(float move, bool crouch, bool jump)
-        {
-            //only control the player if grounded or airControl is turned on
-            if (m_Grounded || m_AirControl)
-            {
-                // The Speed animator parameter is set to the absolute value of the horizontal input.
-                m_Anim.SetFloat("Speed", Mathf.Abs(move));
-
-                // Move the character
-                m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
-
-				if (RunAudioPlayer != null) {
-					bool shouldPlay = (move != 0 && m_Grounded);
-					if (shouldPlay && !RunAudioPlayer.isPlaying) {
-						RunAudioPlayer.Play ();
-					} else if (!shouldPlay && RunAudioPlayer.isPlaying) {
-						RunAudioPlayer.Stop ();
-					}
+	private void FixedUpdate () {
+		OnGround = false;
+		Collider2D[] overlapping = Physics2D.OverlapCircleAll(GroundCheck.position,
+		                                                          0.2f,
+		                                                          -1); // All layers.
+		foreach (Collider2D overlap in overlapping) {
+			if (overlap.gameObject != gameObject) {
+				ColorBehavior otherCB = overlap.GetComponent<ColorBehavior>();
+				if (ColorBehavior == null ||
+				    otherCB == null ||
+				    ColorBehavior.ShouldCollide(otherCB)) {
+					OnGround = true;
+					break;
 				}
+			}
+		}
 
-                // If the input is moving the player right and the player is facing left...
-                if (move > 0 && !m_FacingRight)
-                {
-                    // ... flip the player.
-                    Flip();
-                }
-                    // Otherwise if the input is moving the player left and the player is facing right...
-                else if (move < 0 && m_FacingRight)
-                {
-                    // ... flip the player.
-                    Flip();
-                }
-            }
-            // If the player should jump...
-			if (m_Grounded && jump && m_Anim.GetBool("Ground") && !m_ColorBehavior.IsEmbedded ())
-            {
-                // Add a vertical force to the player.
-                m_Grounded = false;
-                m_Anim.SetBool("Ground", false);
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				if (JumpAudioPlayer != null) {
-					JumpAudioPlayer.Play ();
-				}
-            }
-        }
+		if (Animator != null) {
+			Animator.SetFloat("vSpeed", Rigidbody.velocity.y);
+			Animator.SetBool("Ground", OnGround);
+		}
+	}
 
+	public void Move (float xMagnitude) {
+		if (Animator != null) {
+			Animator.SetFloat("Speed", Mathf.Abs(xMagnitude));
+		}
 
-        private void Flip()
-        {
-            // Switch the way the player is labelled as facing.
-            m_FacingRight = !m_FacingRight;
+		Rigidbody.velocity = new Vector2(xMagnitude * MaxXSpeed, Rigidbody.velocity.y);
 
-            // Multiply the player's x local scale by -1.
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
-        }
-    }
+		if (RunAudioPlayer != null) {
+			bool shouldPlay = (xMagnitude != 0.0f && OnGround);
+			if (shouldPlay && !RunAudioPlayer.isPlaying) {
+				RunAudioPlayer.Play ();
+			} else if (!shouldPlay && RunAudioPlayer.isPlaying) {
+				RunAudioPlayer.Stop ();
+			}
+		}
+
+		Flip (xMagnitude);
+	}
+
+	public void Jump () {
+		if ((OnGround || ForceAllowJump) && !ColorBehavior.IsEmbedded ()) {
+			OnGround = ForceAllowJump = false;
+
+			Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, 0.0f);
+			Rigidbody.AddForce(new Vector2(0.0f, JumpForce));
+
+			if (JumpAudioPlayer != null) {
+				JumpAudioPlayer.Play ();
+			}
+		}
+	}
+
+	private void Flip (float xMagnitude) {
+		Vector3 localScale = gameObject.transform.localScale;
+		if (xMagnitude > 0.0f && localScale.x < 0.0f ||
+		    xMagnitude < 0.0f && localScale.x > 0.0f) {
+			localScale.x *= -1;
+			gameObject.transform.localScale = localScale;
+		}
+	}
 }

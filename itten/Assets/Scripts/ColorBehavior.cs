@@ -27,6 +27,8 @@ public class ColorBehavior : MonoBehaviour {
 		get;
 		private set;
 	}
+	private PlatformerCharacter2D PlatformerCharacter;
+
 	private SpriteRenderer[] SpriteRenderers;
 	private Text[] Texts;
 	private BlendModes.BlendModeEffect[] BMEs;
@@ -50,6 +52,7 @@ public class ColorBehavior : MonoBehaviour {
 		Texts = GetComponentsInChildren<Text>();
 		BMEs = GetComponentsInChildren<BlendModes.BlendModeEffect>();
 		Rigidbody = GetComponent<Rigidbody2D>();
+        PlatformerCharacter = GetComponent<PlatformerCharacter2D>();
     }
 
     void Start () {
@@ -77,8 +80,8 @@ public class ColorBehavior : MonoBehaviour {
 	public bool IsEmbedded () {
 		return EmbedJoint != null;
 	}
-	
-	private bool ShouldCollide (ColorBehavior that) {
+
+	public bool ShouldCollide (ColorBehavior that) {
 		return Color.Mix (that.Color) == GelColor.Black;
 	}
 
@@ -139,6 +142,8 @@ public class ColorBehavior : MonoBehaviour {
 		if (EmbedJoint != null) {
 			Destroy(EmbedJoint);
 			EmbedJoint = null;
+            // Allow the player one jump after becoming un-embedded.
+            PlatformerCharacter.ForceAllowJump = true;
 		}
 	}
 
