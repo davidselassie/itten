@@ -1103,7 +1103,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 424182, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 21243056, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
       propertyPath: m_Color.b
@@ -1419,7 +1419,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!1 &989309487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,7 +1953,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1169396164}
   m_Layer: 0
-  m_Name: Structure
+  m_Name: Level Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
