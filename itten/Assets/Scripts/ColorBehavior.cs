@@ -7,13 +7,13 @@ using System.Linq;
 [RequireComponent(typeof(Rigidbody2D)),
  RequireComponent(typeof(Collider2D))]
 public class ColorBehavior : MonoBehaviour {
-	public float Alpha = 0.75f;
-
-	// Color is extracted from the color of the renderers. Set the starting color in the GUI on the renderers.
+	// Color and alpha are extracted from the color of the renderers.
+	// Set the starting color in the GUI on the renderers.
 	public GelColor Color {
 		get;
 		private set;
 	}
+	private float Alpha;
 
     public Collider2D[] Colliders {
         get;
@@ -56,13 +56,16 @@ public class ColorBehavior : MonoBehaviour {
     }
 
     void Start () {
-		// Use the first renderer we find to pick the color.
+		// Use the first renderer we find to select the color and alpha.
 		if (SpriteRenderers.Length > 0) {
 			Color = GelColorExtensions.FromRenderColor (SpriteRenderers[0].color);
+			Alpha = SpriteRenderers[0].color.a;
 		} else if (Texts.Length > 0) {
 			Color = GelColorExtensions.FromRenderColor (Texts[0].color);
+			Alpha = Texts[0].color.a;
 		} else if (BMEs.Length > 0) {
 			Color = GelColorExtensions.FromRenderColor (BMEs[0].TintColor);
+			Alpha = BMEs[0].TintColor.a;
         }
 		SetColor (Color);
     }
