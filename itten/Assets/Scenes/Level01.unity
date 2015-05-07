@@ -5838,33 +5838,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 19846080, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
-      propertyPath: ColorModule.enabled
+    - target: {fileID: 8210236, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 70f2369f8ec494e4784d4e453e4ac154, type: 3}
+    - target: {fileID: 8210236, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
+      propertyPath: m_Pitch
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19846080, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
-      propertyPath: InitialModule.startColor.maxColor.rgba
-      value: 4278190335
+    - target: {fileID: 8210236, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
+      propertyPath: m_Volume
+      value: .75
       objectReference: {fileID: 0}
-    - target: {fileID: 19846080, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
-      propertyPath: ColorModule.gradient.maxGradient.key0.rgba
-      value: 3053453311
-      objectReference: {fileID: 0}
-    - target: {fileID: 19846080, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
-      propertyPath: ColorModule.gradient.maxGradient.key1.rgba
-      value: 3053453311
-      objectReference: {fileID: 0}
-    - target: {fileID: 19846080, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
-      propertyPath: ColorModule.gradient.minGradient.key0.rgba
-      value: 922746879
-      objectReference: {fileID: 0}
-    - target: {fileID: 19846080, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
-      propertyPath: ColorModule.gradient.minGradient.key1.rgba
-      value: 922746879
-      objectReference: {fileID: 0}
-    - target: {fileID: 19846080, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
-      propertyPath: ColorModule.gradient.minMaxState
-      value: 3
+    - target: {fileID: 8217266, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
+      propertyPath: m_Volume
+      value: .75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18677c5dc3fec4d7ca61d1602eefd5c5, type: 2}
