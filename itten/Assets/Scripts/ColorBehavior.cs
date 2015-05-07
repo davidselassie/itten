@@ -32,6 +32,7 @@ public class ColorBehavior : MonoBehaviour {
 	private SpriteRenderer[] SpriteRenderers;
 	private Text[] Texts;
 	private BlendModes.BlendModeEffect[] BMEs;
+	private ParticleSystem[] PSs;
 
 	private Joint2D EmbedJoint = null;
 
@@ -51,6 +52,7 @@ public class ColorBehavior : MonoBehaviour {
 		SpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 		Texts = GetComponentsInChildren<Text>();
 		BMEs = GetComponentsInChildren<BlendModes.BlendModeEffect>();
+		PSs = GetComponentsInChildren<ParticleSystem>();
 		Rigidbody = GetComponent<Rigidbody2D>();
         PlatformerCharacter = GetComponent<PlatformerCharacter2D>();
     }
@@ -161,6 +163,9 @@ public class ColorBehavior : MonoBehaviour {
 		}
 		foreach (BlendModes.BlendModeEffect BME in BMEs) {
 			BME.TintColor = renderColor;
+		}
+		foreach (ParticleSystem PS in PSs) {
+			PS.startColor = renderColor;
 		}
 	}
 }
