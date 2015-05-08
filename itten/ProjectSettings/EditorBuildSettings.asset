@@ -8,14 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Init.unity
   - enabled: 1
-    path: Assets/Scenes/Level01.unity
+    path: Assets/Scenes/New01.unity
   - enabled: 1
-    path: Assets/Scenes/Level02.unity
+    path: Assets/Scenes/New02.unity
   - enabled: 1
-    path: Assets/Scenes/Level03.unity
+    path: Assets/Scenes/New03.unity
   - enabled: 1
-    path: Assets/Scenes/Level04.unity
+    path: Assets/Scenes/New04.unity
+  - enabled: 1
+    path: Assets/Scenes/New05.unity
   - enabled: 1
     path: Assets/Scenes/Credits.unity
-  - enabled: 1
-    path: Assets/Scenes/Level05.unity
