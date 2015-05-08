@@ -23,6 +23,7 @@ public class ColorBehavior : MonoBehaviour {
 		get;
 		private set;
 	}
+
 	public Rigidbody2D Rigidbody {
 		get;
 		private set;
@@ -34,7 +35,7 @@ public class ColorBehavior : MonoBehaviour {
 	private BlendModes.BlendModeEffect[] BMEs;
 	private ParticleSystem[] PSs;
 
-	private Joint2D EmbedJoint = null;
+	private Joint2D JoinedJoint = null;
 
 	void Awake () {
 		Collider2D[] allColliders = GetComponentsInChildren<Collider2D>();
@@ -49,15 +50,15 @@ public class ColorBehavior : MonoBehaviour {
 		if (Colliders.Length != Triggers.Length) {
 			Debug.LogError("ColorBehavior is missing a trigger or physical collider; unequal counts!", gameObject);
 		}
+
 		SpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 		Texts = GetComponentsInChildren<Text>();
 		BMEs = GetComponentsInChildren<BlendModes.BlendModeEffect>();
 		PSs = GetComponentsInChildren<ParticleSystem>();
+
 		Rigidbody = GetComponent<Rigidbody2D>();
         PlatformerCharacter = GetComponent<PlatformerCharacter2D>();
-    }
 
-    void Start () {
 		// Use the first renderer we find to select the color and alpha.
 		if (SpriteRenderers.Length > 0) {
 			Color = GelColorExtensions.FromRenderColor (SpriteRenderers[0].color);
@@ -68,7 +69,10 @@ public class ColorBehavior : MonoBehaviour {
 		} else if (BMEs.Length > 0) {
 			Color = GelColorExtensions.FromRenderColor (BMEs[0].TintColor);
 			Alpha = BMEs[0].TintColor.a;
-        }
+		}
+    }
+
+    void Start () {
 		SetColor (Color);
     }
 
@@ -82,8 +86,8 @@ public class ColorBehavior : MonoBehaviour {
 		ReckonOverlapping (CBs);
 	}
 
-	public bool IsEmbedded () {
-		return EmbedJoint != null;
+	public bool IsJoined () {
+		return JoinedJoint != null;
 	}
 
 	public bool ShouldCollide (ColorBehavior that) {
@@ -125,7 +129,7 @@ public class ColorBehavior : MonoBehaviour {
 					// If we've already got a constraint and we're still stuck after a color change, keep using that constraint.
 					// You just cycled through to another color that also gets stuck.
 					// TODO: Figure out what to do if you should be embedded in multiple other blocks.
-					if (EmbedJoint == null) {
+					if (JoinedJoint == null) {
 						DistanceJoint2D newJoint = gameObject.AddComponent<DistanceJoint2D>();
 						// Explicitly enable collisions. They're disabled by default and make trigger overlap detection not work.
 						newJoint.enableCollision = true;
@@ -135,7 +139,7 @@ public class ColorBehavior : MonoBehaviour {
 							gameObject.transform.position);
 						newJoint.distance = 0.0f;
 
-						EmbedJoint = newJoint;
+						JoinedJoint = newJoint;
 					}
 					// Manually disable collisions on only the physical colliders, not the triggers.
 					SetCollidability (CB, false);
@@ -144,11 +148,14 @@ public class ColorBehavior : MonoBehaviour {
 			}
 		}
 		// If there were no colors we were embedded in, remove existing constraints.
-		if (EmbedJoint != null) {
-			Destroy(EmbedJoint);
-			EmbedJoint = null;
+		if (JoinedJoint != null) {
+			Destroy(JoinedJoint);
+			JoinedJoint = null;
+
             // Allow the player one jump after becoming un-embedded.
-            PlatformerCharacter.ForceAllowJump = true;
+			if (PlatformerCharacter != null) {
+				PlatformerCharacter.ForceAllowJump = true;
+			}
 		}
 	}
 

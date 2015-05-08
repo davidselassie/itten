@@ -66,7 +66,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 
 	public void Jump () {
-		if ((OnGround || ForceAllowJump) && !ColorBehavior.IsEmbedded ()) {
+		if ((OnGround || ForceAllowJump) && !ColorBehavior.IsJoined ()) {
 			OnGround = ForceAllowJump = false;
 
 			Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, 0.0f);
