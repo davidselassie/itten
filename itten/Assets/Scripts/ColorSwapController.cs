@@ -19,11 +19,11 @@ public class ColorSwapController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (CrossPlatformInputManager.GetButtonDown ("Red") && ColorBehavior.Color != GelColor.Red) {
+		if (Input.GetButtonDown ("Red") && ColorBehavior.Color != GelColor.Red) {
 			SwapTo (GelColor.Red);
-		} else if (CrossPlatformInputManager.GetButtonDown ("Green") && ColorBehavior.Color != GelColor.Green) {
+		} else if (Input.GetButtonDown ("Green") && ColorBehavior.Color != GelColor.Green) {
 			SwapTo (GelColor.Green);
-		} else if (CrossPlatformInputManager.GetButtonDown ("Blue") && ColorBehavior.Color != GelColor.Blue) {
+		} else if (Input.GetButtonDown ("Blue") && ColorBehavior.Color != GelColor.Blue) {
 			SwapTo (GelColor.Blue);
 		}
 	}

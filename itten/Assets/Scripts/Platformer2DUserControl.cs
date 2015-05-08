@@ -14,12 +14,12 @@ public class Platformer2DUserControl : MonoBehaviour
 	private void Update () {
 		// Read the jump input in Update so button presses aren't missed.
 		if (!DoJump) {
-			DoJump = CrossPlatformInputManager.GetButtonDown ("Jump");
+			DoJump = Input.GetButtonDown ("Jump");
 		}
 	}
 	
 	private void FixedUpdate () {
-		float h = CrossPlatformInputManager.GetAxis ("Run");
+		float h = Input.GetAxis ("Run");
 		PlatformerCharacter.Move (h);
 		if (DoJump) {
 			PlatformerCharacter.Jump ();
