@@ -35,7 +35,7 @@ public class ColorBehavior : MonoBehaviour {
 	private BlendModes.BlendModeEffect[] BMEs;
 	private ParticleSystem[] PSs;
 
-	private Joint2D JoinedJoint = null;
+	private Joint2D[] JoinedJoints = new Joint2D[0];
 
 	void Awake () {
 		Collider2D[] allColliders = GetComponentsInChildren<Collider2D>();
@@ -83,11 +83,12 @@ public class ColorBehavior : MonoBehaviour {
 
 		ColorBehavior[] CBs = FindObjectsOfType (typeof(ColorBehavior)) as ColorBehavior[];
 		ResetCollidability (CBs);
-		ReckonOverlapping (CBs);
+		CreateDestroyJoints (CBs);
+		CleanupBackjoints (CBs);
 	}
 
 	public bool IsJoined () {
-		return JoinedJoint != null;
+		return JoinedJoints.Length > 0;
 	}
 
 	public bool ShouldCollide (ColorBehavior that) {
@@ -122,39 +123,45 @@ public class ColorBehavior : MonoBehaviour {
 		return false;
 	}
 
-	private void ReckonOverlapping (ColorBehavior[] CBs) {
-		foreach (ColorBehavior CB in CBs) {
-			if (CB != this) {
-				if (ShouldCollide (CB) && IsOverlapping (CB)) {
-					// If we've already got a constraint and we're still stuck after a color change, keep using that constraint.
-					// You just cycled through to another color that also gets stuck.
-					// TODO: Figure out what to do if you should be embedded in multiple other blocks.
-					if (JoinedJoint == null) {
-						DistanceJoint2D newJoint = gameObject.AddComponent<DistanceJoint2D>();
-						// Explicitly enable collisions. They're disabled by default and make trigger overlap detection not work.
-						newJoint.enableCollision = true;
-						newJoint.connectedBody = CB.Rigidbody;
-						// Spring zeros to current position in overlapped object's space.
-						newJoint.connectedAnchor = CB.gameObject.transform.InverseTransformPoint(
-							gameObject.transform.position);
-						newJoint.distance = 0.0f;
+	public void CreateDestroyJoints () {
+		ColorBehavior[] CBs = FindObjectsOfType (typeof(ColorBehavior)) as ColorBehavior[];
+		CreateDestroyJoints (CBs);
+	}
 
-						JoinedJoint = newJoint;
-					}
-					// Manually disable collisions on only the physical colliders, not the triggers.
-					SetCollidability (CB, false);
-                    return;
-				}
-			}
+	private void CreateDestroyJoints (ColorBehavior[] CBs) {
+		bool wasJoined = IsJoined ();
+		foreach (Joint2D joinedJoint in JoinedJoints) {
+			Destroy (joinedJoint);
 		}
-		// If there were no colors we were embedded in, remove existing constraints.
-		if (JoinedJoint != null) {
-			Destroy(JoinedJoint);
-			JoinedJoint = null;
 
-            // Allow the player one jump after becoming un-embedded.
-			if (PlatformerCharacter != null) {
-				PlatformerCharacter.ForceAllowJump = true;
+		JoinedJoints = CBs.Where (CB => {
+			return CB != this && ShouldCollide (CB) && IsOverlapping (CB);
+		}).Select (CB => {
+			DistanceJoint2D newJoint = gameObject.AddComponent<DistanceJoint2D> ();
+			// Explicitly enable collisions. They're disabled by default and make trigger overlap detection not work.
+			newJoint.enableCollision = true;
+			newJoint.connectedBody = CB.Rigidbody;
+			// Spring zeros to current position in overlapped object's space.
+			newJoint.connectedAnchor = CB.gameObject.transform.InverseTransformPoint(
+				gameObject.transform.position);
+			newJoint.distance = 0.0f;
+
+			// Side effect!
+			SetCollidability (CB, false);
+
+			return newJoint;
+		}).ToArray ();
+
+		// Allow the player one jump after becoming un-joined.
+		if (PlatformerCharacter != null && wasJoined && !IsJoined ()) {
+			PlatformerCharacter.ForceAllowJump = true;
+		}
+	}
+
+	private void CleanupBackjoints (ColorBehavior[] CBs) {
+		foreach (ColorBehavior CB in CBs) {
+			if (CB != this && IsOverlapping (CB)) {
+				CB.CreateDestroyJoints ();
 			}
 		}
 	}
