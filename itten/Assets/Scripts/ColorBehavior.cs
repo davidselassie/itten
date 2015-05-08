@@ -83,8 +83,14 @@ public class ColorBehavior : MonoBehaviour {
 
 		ColorBehavior[] CBs = FindObjectsOfType (typeof(ColorBehavior)) as ColorBehavior[];
 		ResetCollidability (CBs);
+
+		bool wasJoined = IsJoined ();
 		CreateDestroyJoints (CBs);
 		CleanupBackjoints (CBs);
+		// Allow the player one jump after becoming un-joined.
+		if (PlatformerCharacter != null && wasJoined && !IsJoined ()) {
+			PlatformerCharacter.ForceAllowJump = true;
+		}
 	}
 
 	public bool IsJoined () {
@@ -129,33 +135,41 @@ public class ColorBehavior : MonoBehaviour {
 	}
 
 	private void CreateDestroyJoints (ColorBehavior[] CBs) {
-		bool wasJoined = IsJoined ();
-		foreach (Joint2D joinedJoint in JoinedJoints) {
-			Destroy (joinedJoint);
-		}
-
-		JoinedJoints = CBs.Where (CB => {
+		var shouldHaveJointsTo = CBs.Where (CB => {
 			return CB != this && ShouldCollide (CB) && IsOverlapping (CB);
-		}).Select (CB => {
-			DistanceJoint2D newJoint = gameObject.AddComponent<DistanceJoint2D> ();
-			// Explicitly enable collisions. They're disabled by default and make trigger overlap detection not work.
-			newJoint.enableCollision = true;
-			newJoint.connectedBody = CB.Rigidbody;
-			// Spring zeros to current position in overlapped object's space.
-			newJoint.connectedAnchor = CB.gameObject.transform.InverseTransformPoint(
-				gameObject.transform.position);
-			newJoint.distance = 0.0f;
+		});
+		var currentlyHaveJointsTo = JoinedJoints.Select (JJ => {
+			return JJ.connectedBody.gameObject.GetComponent<ColorBehavior> ();
+		});
+		var createJointsTo = shouldHaveJointsTo.Except (currentlyHaveJointsTo);
+		var destroyJointsTo = currentlyHaveJointsTo.Except (shouldHaveJointsTo);
 
-			// Side effect!
-			SetCollidability (CB, false);
+		var destroyJoints = JoinedJoints.Where (JJ => {
+			return destroyJointsTo.Contains (JJ.connectedBody.gameObject.GetComponent<ColorBehavior> ());
+		});
 
-			return newJoint;
-		}).ToArray ();
+		JoinedJoints = JoinedJoints.Except (destroyJoints).Concat (createJointsTo.Select (CB => CreateJointTo (CB))).ToArray ();
 
-		// Allow the player one jump after becoming un-joined.
-		if (PlatformerCharacter != null && wasJoined && !IsJoined ()) {
-			PlatformerCharacter.ForceAllowJump = true;
+		foreach (Joint2D destroyJoint in destroyJoints) {
+			Destroy (destroyJoint);
 		}
+
+		// Re-set exception on colildability for joined objects.
+		foreach (ColorBehavior CB in shouldHaveJointsTo) {
+			SetCollidability (CB, false);
+		}
+	}
+
+	private Joint2D CreateJointTo (ColorBehavior CB) {
+		DistanceJoint2D newJoint = gameObject.AddComponent<DistanceJoint2D> ();
+		// Explicitly enable collisions. They're disabled by default and make trigger overlap detection not work.
+		newJoint.enableCollision = true;
+		newJoint.connectedBody = CB.Rigidbody;
+		// Spring zeros to current position in overlapped object's space.
+		newJoint.connectedAnchor = CB.gameObject.transform.InverseTransformPoint(
+			gameObject.transform.position);
+		newJoint.distance = 0.0f;
+		return newJoint;
 	}
 
 	private void CleanupBackjoints (ColorBehavior[] CBs) {
