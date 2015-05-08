@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(ColorBehavior))]
 public class ColorSwapController : MonoBehaviour {
@@ -19,11 +19,11 @@ public class ColorSwapController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown ("r") && ColorBehavior.Color != GelColor.Red) {
+		if (CrossPlatformInputManager.GetButtonDown ("Red") && ColorBehavior.Color != GelColor.Red) {
 			SwapTo (GelColor.Red);
-		} else if (Input.GetKeyDown ("g") && ColorBehavior.Color != GelColor.Green) {
+		} else if (CrossPlatformInputManager.GetButtonDown ("Green") && ColorBehavior.Color != GelColor.Green) {
 			SwapTo (GelColor.Green);
-		} else if (Input.GetKeyDown ("b") && ColorBehavior.Color != GelColor.Blue) {
+		} else if (CrossPlatformInputManager.GetButtonDown ("Blue") && ColorBehavior.Color != GelColor.Blue) {
 			SwapTo (GelColor.Blue);
 		}
 	}

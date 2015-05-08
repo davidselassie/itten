@@ -19,7 +19,7 @@ public class Platformer2DUserControl : MonoBehaviour
 	}
 	
 	private void FixedUpdate () {
-		float h = CrossPlatformInputManager.GetAxis ("Horizontal");
+		float h = CrossPlatformInputManager.GetAxis ("Run");
 		PlatformerCharacter.Move (h);
 		if (DoJump) {
 			PlatformerCharacter.Jump ();
