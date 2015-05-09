@@ -12,8 +12,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Build/Level02.01.unity
   - enabled: 1
-    path: Assets/Scenes/Build/Level03.01.unity
+    path: Assets/Scenes/Build/Level03.02.unity
   - enabled: 1
     path: Assets/Scenes/Build/Level04.01.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Level05.01.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Level06.00.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Level07.00.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Level08.00.unity
+  - enabled: 1
+    path: Assets/Scenes/Build/Level09.00.unity
   - enabled: 1
     path: Assets/Scenes/Credits.unity
